@@ -50,9 +50,9 @@ func main() {
 
 	consumer, err := rabbitMQ.Consume(processor, rabbitmq.ConsumerConfig{
 		MaxRetry:           appConfig.RABBITMQ_MAXIMUM_RETRY,
-		FailoverExchange:   appConfig.RABBITMQ_ASSIGNMENT_EXCHANGE,
+		FailoverExchange:   appConfig.RABBITMQ_TAG_EXCHANGE,
 		DeadLetterExchange: appConfig.RABBITMQ_DEAD_LETTERING_EXCHANGE,
-		ConsumeQueue:       appConfig.RABBITMQ_ASSIGNMENT_CREATE_QUEUE,
+		ConsumeQueue:       appConfig.RABBITMQ_TAG_CREATE_QUEUE,
 	})
 
 	if err != nil {

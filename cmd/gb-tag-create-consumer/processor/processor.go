@@ -22,11 +22,6 @@ func NewProcessor(rabbitmqPublisher *rabbitmq.Publisher, tagRepository repositor
 	}
 }
 
-const (
-	RountingKeyCreate = "create"
-	RoutingKeyDelete  = "delete"
-)
-
 func (p *Processor) Process(d rabbitmq.Delivery) error {
 	tag := globalmodel.Tag{}
 	err := json.Unmarshal(d.Body, &tag)
@@ -52,6 +47,6 @@ func (p *Processor) Process(d rabbitmq.Delivery) error {
 		return err
 	}
 
-	logrus.Info("Successfully created the assignment id: ", tag.ID)
+	logrus.Info("Successfully created the tag id: ", tag.ID)
 	return nil
 }
