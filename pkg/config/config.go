@@ -10,13 +10,15 @@ import (
 
 type Config struct {
 	Env                              string
-	HTTP_SERVER_PORT                 string `envconfig:"HTTP_SERVER_PORT" default:"3004"`
+	CREATE_TAG_HTTP_SERVER_PORT      string `envconfig:"CREATE_TAG_HTTP_SERVER_PORT" default:"3004"`
+	DELETE_TAG_HTTP_SERVER_PORT      string `envconfig:"DELETE_TAG_HTTP_SERVER_PORT" default:"3005"`
 	MYSQL_CONNECTION_STRING          string `envconfig:"MYSQL_CONNECTION_STRING"`
 	RABBITMQ_CONNECTION              string `envconfig:"RABBITMQ_CONNECTION" default:"amqp://guest:guest@localhost:5672"`
 	RABBITMQ_MAXIMUM_RETRY           int    `envconfig:"RABBITMQ_MAXIMUM_RETRY" default:"3"`
 	RABBITMQ_DEAD_LETTERING_EXCHANGE string `envconfig:"RABBITMQ_DEAD_LETTERING_EXCHANGE" default:"tag.fail"`
 	RABBITMQ_TAG_EXCHANGE            string `envconfig:"RABBITMQ_TAG_EXCHANGE" default:"tag"`
 	RABBITMQ_TAG_CREATE_QUEUE        string `envconfig:"RABBITMQ_TAG_CREATE_QUEUE" default:"tag.create.update"`
+	RABBITMQ_TAG_DELETE_QUEUE        string `envconfig:"RABBITMQ_TAG_DELETE_QUEUE" default:"tag.delete.update""`
 }
 
 func Load() Config {
