@@ -38,8 +38,8 @@ func main() {
 	// Start HealthChecking Server
 	go func() {
 		httpServer := httpserver.NewHttpServer()
-		logrus.Info("Listening and serving HTTP on :", appConfig.HTTP_SERVER_PORT)
-		httpServer.Run(fmt.Sprint(":", appConfig.HTTP_SERVER_PORT))
+		logrus.Info("Listening and serving HTTP on :", appConfig.CREATE_TAG_HTTP_SERVER_PORT)
+		httpServer.Run(fmt.Sprint(":", appConfig.CREATE_TAG_HTTP_SERVER_PORT))
 	}()
 
 	// Create Repository
