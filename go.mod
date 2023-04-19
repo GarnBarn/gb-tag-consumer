@@ -3,7 +3,7 @@ module github.com/GarnBarn/gb-tag-consumer
 go 1.20
 
 require (
-	github.com/GarnBarn/common-go v0.3.1
+	github.com/GarnBarn/common-go v0.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/pquerna/otp v1.4.0

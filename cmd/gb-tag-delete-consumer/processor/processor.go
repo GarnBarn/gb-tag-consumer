@@ -22,18 +22,18 @@ func NewProcessor(rabbitmqPublisher *rabbitmq.Publisher, tagRepository repositor
 }
 
 func (p *Processor) Process(d rabbitmq.Delivery) error {
-	tag := globalmodel.Tag{}
-	err := json.Unmarshal(d.Body, &tag)
+	tagRequest := globalmodel.TagDeleteRequest{}
+	err := json.Unmarshal(d.Body, &tagRequest)
 	if err != nil {
 		logrus.Error("Can't unmarshal data: ", err)
 		return err
 	}
-	err = p.tagRepository.Delete(int(tag.ID))
+	err = p.tagRepository.Delete(tagRequest.ID)
 	if err != nil {
 		logrus.Error("Can't delete data: ", err)
 		return err
 	}
 
-	logrus.Info("Successfully deleted the tag id: ", tag.ID)
+	logrus.Info("Successfully deleted the tag id: ", tagRequest.ID)
 	return nil
 }
