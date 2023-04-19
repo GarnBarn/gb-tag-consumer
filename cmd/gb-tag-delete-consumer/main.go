@@ -59,10 +59,6 @@ func main() {
 		logrus.Fatal(err)
 	}
 
-	if err != nil {
-		logrus.Fatal(err)
-	}
-
 	gracefulStop := make(chan os.Signal, 1)
 	signal.Notify(gracefulStop, syscall.SIGTERM)
 	signal.Notify(gracefulStop, syscall.SIGINT)
